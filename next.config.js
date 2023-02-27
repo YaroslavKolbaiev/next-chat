@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    HOST: "https://chatic.herokuapp.com",
+    HOST: "https://chatic.herokuapp.com/",
   },
 }
 
