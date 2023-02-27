@@ -1,11 +1,11 @@
 {
-  "name": "chatic",
+  "name": "next-chat",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -40,7 +40,6 @@
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.13.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "gh-pages": "^5.0.0"
+    "eslint-config-airbnb-typescript": "^17.0.0"
   }
 }
