@@ -15,7 +15,7 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "D:/FRONTEND/NODE/CHAT_APP/next-chat/tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
