@@ -3,6 +3,7 @@
 Test full stack web app written on [TypeScript](https://www.typescriptlang.org/)
 
 Front-End hosted on [Netlify](https://www.netlify.com)
+
 Back-End server hostet on [Heroku](https://www.heroku.com)
 
 ## Technologies used in current project
