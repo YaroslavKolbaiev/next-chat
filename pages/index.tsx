@@ -130,12 +130,12 @@ export default function Home() {
       height="100vh"
     >
       <Image
-        src="/assets/logo-no-background.svg"
+        src="/assets/logo.png"
         alt="picture displaying logo"
         position="absolute"
         top="10px"
         left="10px"
-        width="32px"
+        width="38px"
         height="38px"
       />
       <Contacts

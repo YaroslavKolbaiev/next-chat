@@ -90,9 +90,9 @@ export default function Register() {
           <form onSubmit={handleSubmit}>
             <Flex justifyContent="center" alignItems="center">
               <Image
-                src="/assets/logo.jpg"
+                src="/assets/logo-no-background.svg"
                 alt="picture displaying logo"
-                width={100}
+                width={120}
                 height={100}
               />
             </Flex>
