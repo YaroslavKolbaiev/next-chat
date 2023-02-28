@@ -25,8 +25,8 @@ function ScaleFadeEx() {
         <Image
           src="/assets/logo-no-background.svg"
           alt="picture displaying logo"
-          width="120px"
-          height="100px"
+          width="180px"
+          height="60px"
         />
       </Flex>
       <Center>

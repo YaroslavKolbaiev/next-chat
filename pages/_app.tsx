@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Chatic</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta name="description" content="Test project of iRick" />
+        <meta name="description" content="Realtime chat" />
         <link rel="icon" href="/assets/logo.png" />
       </Head>
       <Component {...pageProps} />
