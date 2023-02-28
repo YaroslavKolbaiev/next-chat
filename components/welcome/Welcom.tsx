@@ -23,7 +23,7 @@ function ScaleFadeEx() {
           Welcome to
         </Heading>
         <Image
-          src="/assets/logo.jpg"
+          src="/assets/logo-no-background.svg"
           alt="picture displaying logo"
           width="32px"
           height="38px"

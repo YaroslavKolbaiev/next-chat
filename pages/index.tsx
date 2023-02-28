@@ -130,7 +130,7 @@ export default function Home() {
       height="100vh"
     >
       <Image
-        src="/assets/logo.jpg"
+        src="/assets/logo-no-background.svg"
         alt="picture displaying logo"
         position="absolute"
         top="10px"
