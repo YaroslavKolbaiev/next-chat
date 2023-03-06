@@ -31,7 +31,7 @@ export default function AccountActivationPage({ activationToken }: Props) {
       .finally(() => {
         setDone(true);
       });
-  }, []);
+  }, [activationToken]);
 
   if (!done) {
     return <LoadingComponent />;
