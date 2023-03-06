@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { toastOptions } from '../../utils/toastOptions';
 import { avatarRoute } from '../../utils/APIRoutes';
+import { accessTokenService } from '../../services/accessTokenService';
+import { userService } from '../../services/userService';
 
 interface Avatars {
   avatar: string,
@@ -32,7 +34,8 @@ export default function SetAvatar() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem('chat-app-user')) {
+    const isLoged = accessTokenService.isLoggedIn();
+    if (!isLoged) {
       router.replace('/login');
       return;
     }
@@ -40,7 +43,7 @@ export default function SetAvatar() {
   }, []);
 
   const setProfileImage = async () => {
-    const user = await JSON.parse(localStorage.getItem('chat-app-user') || '');
+    const user = await JSON.parse(userService.get() || '');
     if (!user) {
       toast.error('User not found.', toastOptions);
       return;
@@ -54,9 +57,6 @@ export default function SetAvatar() {
       });
 
       if (data.isSet) {
-        user.isAvatarImageSet = true;
-        user.avatarImage = data.image;
-        localStorage.setItem('chat-app-user', JSON.stringify(user));
         router.replace('/');
       }
     } catch (error) {

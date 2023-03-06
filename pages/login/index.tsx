@@ -12,34 +12,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+// import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { loginRoute } from '../../utils/APIRoutes';
+// import { loginRoute } from '../../utils/APIRoutes';
 import { toastOptions } from '../../utils/toastOptions';
+import { accessTokenService } from '../../services/accessTokenService';
+import { authService } from '../../services/authService';
+import { userService } from '../../services/userService';
 
 export default function Login() {
   const [values, setValues] = useState({
-    userName: '',
+    email: '',
     password: '',
   });
   const router = useRouter();
 
   useEffect(() => {
-    if (localStorage.getItem('chat-app-user')) {
+    const isLoged = accessTokenService.isLoggedIn();
+    if (isLoged) {
       router.replace('/');
     }
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { userName, password } = values;
+    const { email, password } = values;
 
     try {
-      const res = await axios.post(loginRoute, {
-        userName,
-        password,
-      });
-      localStorage.setItem('chat-app-user', JSON.stringify(res.data.user));
+      const { accessToken, user }: any = await authService.login({ email, password });
+      accessTokenService.save(accessToken);
+      userService.save(user);
       router.replace('/');
     } catch (error) {
       toast.error('Error occured when trying to log in', toastOptions);
@@ -66,8 +68,8 @@ export default function Login() {
             <VStack spacing={4}>
               <Input
                 required
-                placeholder="Username"
-                name="userName"
+                placeholder="Email"
+                name="email"
                 onChange={handleChange}
               />
               <Input

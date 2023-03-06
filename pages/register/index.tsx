@@ -7,15 +7,18 @@ import {
   Center,
   Flex,
   VStack,
+  Spinner,
+  Heading,
+  Text,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import { registerRoute } from '../../utils/APIRoutes';
 import { toastOptions } from '../../utils/toastOptions';
+import { authService } from '../../services/authService';
+import { accessTokenService } from '../../services/accessTokenService';
 
 export default function Register() {
   const [values, setValues] = useState({
@@ -25,9 +28,12 @@ export default function Register() {
     confirmPassword: '',
   });
   const router = useRouter();
+  const [registered, setRegistered] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('chat-app-user')) {
+    const isLoged = accessTokenService.isLoggedIn();
+    if (isLoged) {
       router.replace('/');
     }
   }, []);
@@ -61,20 +67,17 @@ export default function Register() {
       const {
         password, userName, email,
       } = values;
+      setIsSubmitting(true);
       try {
-        const res = await axios.post(registerRoute, {
-          userName,
-          email,
-          password,
-        });
-        localStorage.setItem('chat-app-user', JSON.stringify(res.data.user));
-        router.replace('/avatar');
+        await authService.register({ userName, email, password });
+        setRegistered(true);
+        setIsSubmitting(false);
       } catch (error: any) {
         if (error.message === 'Network Error') {
           toast.error('We have some issues on the server. Please try again later.', toastOptions);
           return;
         }
-        toast.error('Username or email alreade exist.', toastOptions);
+        toast.error('Please try again', toastOptions);
       }
     }
   };
@@ -82,6 +85,19 @@ export default function Register() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  if (registered) {
+    return (
+      <Container pt="8" maxW="container.sm">
+        <Box boxShadow="2xl" p="6" rounded="md">
+          <Heading textAlign="center">Check your email</Heading>
+          <Text p={3} fontSize="3xl">
+            We have sent you an email with the activation link.
+          </Text>
+        </Box>
+      </Container>
+    );
+  }
 
   return (
     <Box pt="20vh" height="100vh">
@@ -124,7 +140,13 @@ export default function Register() {
                 name="confirmPassword"
                 onChange={handleChange}
               />
-              <Button width="100%" type="submit" colorScheme="teal">Create User</Button>
+              <Button
+                width="100%"
+                type="submit"
+                colorScheme="teal"
+              >
+                {isSubmitting ? <Spinner /> : 'Create User'}
+              </Button>
             </VStack>
           </form>
           <Center mt={3}>

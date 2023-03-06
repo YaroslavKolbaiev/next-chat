@@ -5,6 +5,7 @@ import React, {
   useEffect,
 } from 'react';
 import { Users } from '../../types/Users';
+import LoadingComponent from '../NewFolder/RedirectedScreen';
 import classes from './Chat.module.css';
 
 interface Message {
@@ -41,7 +42,7 @@ export default function Chat({
       bgImage="/assets/bg.jpg"
       height="100%"
     >
-      {loading ? <p>Loading</p> : messages.map((msg, i) => {
+      {loading ? <LoadingComponent /> : messages.map((msg, i) => {
         const lastMessage = messages.length - 1 === i;
         return (
           <Box
