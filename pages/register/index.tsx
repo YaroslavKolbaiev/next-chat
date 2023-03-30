@@ -75,9 +75,11 @@ export default function Register() {
       } catch (error: any) {
         if (error.message === 'Network Error') {
           toast.error('We have some issues on the server. Please try again later.', toastOptions);
+          setIsSubmitting(false);
           return;
         }
-        toast.error('Please try again', toastOptions);
+        toast.error(error.response.data.message, toastOptions);
+        setIsSubmitting(false);
       }
     }
   };

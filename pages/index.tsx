@@ -44,7 +44,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const fetchUsers = async () => {
-    const user = await JSON.parse(userService.get() || '');
+    const user = JSON.parse(userService.get() || '');
 
     if (!user) {
       toast.error('User not found.', toastOptions);

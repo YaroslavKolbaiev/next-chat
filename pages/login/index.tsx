@@ -43,8 +43,8 @@ export default function Login() {
       accessTokenService.save(accessToken);
       userService.save(user);
       router.replace('/');
-    } catch (error) {
-      toast.error('Error occured when trying to log in', toastOptions);
+    } catch (error: any) {
+      toast.error(error.response.data.message, toastOptions);
     }
   };
 
@@ -68,6 +68,7 @@ export default function Login() {
             <VStack spacing={4}>
               <Input
                 required
+                type="email"
                 placeholder="Email"
                 name="email"
                 onChange={handleChange}
