@@ -1,22 +1,22 @@
 # Chatic
 
-This project is a full-stack chat application that allows real-time communication between users. The application is developed using a variety of modern technologies and frameworks to ensure efficient and secure communication.
+This project is a full-stack chat application that enables real-time communication between users.
 
-The front-end of the application is developed using NextJS, a popular React framework known for its features like server-side rendering and generating static websites. The application is hosted on Netlify, a platform that provides hosting and serverless backend services for web applications and static websites.
+The front-end of the application is built using NextJS, a powerful React framework that supports features like server-side rendering and static website generation. The back-end is developed with NodeJS, a JavaScript runtime that enables the creation of scalable network applications.
 
-The back-end of the application is developed using NodeJS, a JavaScript runtime that allows developers to build scalable network applications. The server is created using Express, a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. The back-end is hosted on Render, a unified platform to build and run all your apps and websites with free SSL, a global CDN, private networks and auto deploys from Git.
+The application is hosted on two platforms: Netlify for the front-end and Google Cloud for the back-end, ensuring robust and reliable performance.
 
-The application uses Socket.io for real-time bidirectional event-based communication. It works on every platform, browser, or device, focusing equally on reliability and speed.
+## About the project
 
-The data is stored in MongoDB, a source-available cross-platform document-oriented database program. Mongoose is used as an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+The project utilizes a variety of modern technologies:
 
-For authorization, security, and endpoint protection, the application uses JSON Web Tokens (JWT). JWT is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
-
-The application is written in TypeScript, a statically typed superset of JavaScript that adds optional types to the language. TypeScript speeds up your development experience by catching errors and providing fixes before you even run your code.
-
-The code is managed using ESLint, a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
-
-For styling, the application uses Chakra UI, a simple, modular, and accessible component library that gives you all the building blocks you need to build your React applications.
+- TypeScript, a statically typed superset of JavaScript, is used to ensure type safety and enhance the development experience.
+- EsLint is employed for code management, helping to maintain code consistency and avoid potential bugs.
+- Express, a minimal and flexible NodeJS framework, is used for creating the server.
+- Real-time chat functionality is achieved with Socket io.
+- MongoDB is used as the database, with Mongoose serving as the Object Data Modeling (ODM) library to manage relationships between data and provide schema validation.
+- JWT is used for authorization, security, and endpoint protection.
+- The application's styling is done with Chakra, a simple, modular, and accessible component library.
 
 ## Visit Page
 
